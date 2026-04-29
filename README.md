@@ -1,184 +1,129 @@
-# Microservice-Architecture
+# 🚀 Microservices Architecture Project
 
-This project demonstrates a Microservices Architecture using Spring Boot, where a large application is broken down into smaller, independent services that work together.
+This project demonstrates a complete **Microservices Architecture** using Spring Boot, including Service Discovery, API Gateway, and inter-service communication.
 
+---
 
-# Project Architecture
+## 📌 🏗️ Project Overview
 
-1) User Service
+The system is divided into multiple independent services:
 
--  Manages user - related data
--  Handles CRUD operations (Create, Read, Update, Delete)
+* **User Service** → Manages user data
+* **Department Service** → Manages department data
+* **Service Registry** → Eureka Server for service discovery
+* **API Gateway** → Central entry point for routing requests
 
+---
 
+## 🧩 🛠️ Tech Stack
 
-2) Department Service
+* Java
+* Spring Boot
+* Spring Cloud (Eureka, Gateway)
+* Spring Data JPA
+* H2 / MySQL Database
+* Maven
+* Docker (optional)
 
--  Manages department information
--  Provides department details when requested
+---
 
+## 📁 📂 Project Structure
 
-
-3) Service Registry (Eureka Server)
-
--  Keeps track of all services
--  Helps services discover each other dyanmically
-
-
-
-4) API Gateway
-
--  Single point for all client requests
--  Routes requests to appropriate microservices
--  Handles cross - cutting concerns like security, logging
-
-************************************************************************************************************
-
-
-# Microservices Project Structure
-
+```
 microservices-project/
 │
-
-├── service-registry/        (Eureka Server)
-
-├── api-gateway/             (Gateway)
-
-├── user-service/            (User Microservice)
-
-├── department-service/      (Department Microservice)
-
-
-├── README.md                (project explanation)
-
-************************************************************************************************************
-
-1) Service Registry (Eureka Server)
-
-   service-registry/
+├── service-registry/
+├── api-gateway/
+├── user-service/
+├── department-service/
 │
-├── src/main/java/com/app/
-│   └── ServiceRegistryApplication.java
-    └── ServletInitializer.java
-│
-├── src/main/resources/
-│   └── application.properties
-│
-└── pom.xml
- 
-************************************************************************************************************
+└── README.md
+```
 
-2) API Gateway
+---
 
-   api-gateway/
-│
-├── src/main/java/com/app/
-│   └── ApiGatewayApplication.java
-    └── ServletInitializer.java
-│
-├── src/main/resources/
-│   └── application.yml
-│
-└── pom.xml
+## 🔍 ⚙️ Key Features
 
+✔ Service Discovery using Eureka
+✔ Centralized API Gateway Routing
+✔ Inter-service Communication (User ↔ Department)
+✔ Load Balancing using Eureka
+✔ Independent Deployment of Services
+✔ Scalable Architecture
 
+---
 
-👉 Handles routing:
+## 🔄 🔗 Architecture Flow
 
-- /user/** → User Service
+1. Client sends request to **API Gateway**
+2. API Gateway routes request to respective microservice
+3. Services communicate via REST (or Feign Client)
+4. All services register with **Eureka Server**
 
-- /department/** → Department Service
+---
 
-************************************************************************************************************
+## ▶️ 🚀 How to Run the Project
 
-3) User Service
+### Step 1: Start Service Registry
 
-   user-service/
-│
-├── src/main/java/com/app/
-│   ├── controller/
-│   │   └── UserController.java
-│   │
-│   ├── service/
-│   │   ├── UserService.java
-│   │   └── UserServiceImpl.java
-│   │
-│   ├── repository/
-│   │   └── UserRepository.java
-│   │
-│   ├── entity/
-│   │   └── User.java
-│   │
-│   ├── dto/
-│   │   └── DepartmentDTO.java
-│   │
-│   
-│   └── UserServiceApplication.java
-    └── ServletInitializer.java
-│
-├── src/main/resources/
-│   └── application.properties
-│
-└── pom.xml
+Run the Eureka Server:
 
-************************************************************************************************************
+```
+http://localhost:8761
+```
 
-4) Department Service
+---
 
-   department-service/
-│
-├── src/main/java/com/app/
-│   ├── controller/
-│   │   └── DepartmentController.java
-│   │
-│   ├── service/
-│   │   ├── DepartmentService.java
-│   │   └── DepartmentServiceImpl.java
-│   │
-│   ├── repository/
-│   │   └── DepartmentRepository.java
-│   │
-│   ├── entity/
-│   │   └── Department.java
-│   │
-│   └── DepartmentServiceApplication.java
-│
-├── src/main/resources/
-│   └── application.properties
-│
-└── pom.xml
+### Step 2: Start Microservices
 
-************************************************************************************************************
+Run in order:
 
-🔥 Important Concepts in Your Structure
+1. API Gateway
+2. Department Service
+3. User Service
 
-1) Service Discovery
+---
 
--  All services regiter with *Eureka*
--  Use :  eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+### Step 3: Access APIs via Gateway
 
-  
+| Service            | Endpoint                            |
+| ------------------ | ----------------------------------- |
+| User Service       | http://localhost:9191/user/**       |
+| Department Service | http://localhost:9191/department/** |
 
-2) Communication between services
+---
 
-   In *User Service*
+## 🧪 📬 API Testing (Postman)
 
--  Call Department Service using :
-         - RestTemplate
+Use **Postman** to test APIs:
+
+### Example: Create User
+
+```
+POST /user
+Content-Type: application/json
+
+{
+  "name": "Nikita",
+  "email": "nikita@gmail.com",
+  "departmentId": 1
+}
+```
+
+---
 
 
 
-3) API Gateway Routing
+## 💡 📘 Learning Outcomes
 
+* Understanding Microservices Architecture
+* Service Discovery with Eureka
+* API Gateway implementation
+* Inter-service communication
+* Load balancing concepts
 
-   routes:
-  - id: user-service
-    uri: lb://USER-SERVICE
-    predicates:
-      - Path=/user/**
+---
 
-  - id: department-service
-    uri: lb://DEPARTMENT-SERVICE
-    predicates:
-      - Path=/department/**
-   
+⭐ 📌 Note
+
+This project is created for learning and demonstrating microservices architecture using Spring Boot.
