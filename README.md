@@ -39,12 +39,16 @@ This project demonstrates a Microservices Architecture using Spring Boot, where 
 
 microservices-project/
 │
+
 ├── service-registry/        (Eureka Server)
+
 ├── api-gateway/             (Gateway)
+
 ├── user-service/            (User Microservice)
+
 ├── department-service/      (Department Microservice)
-│
-├── docker-compose.yml       (optional - for Docker)
+
+
 ├── README.md                (project explanation)
 
 ************************************************************************************************************
