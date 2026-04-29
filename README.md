@@ -45,10 +45,15 @@ microservices-project/
 ## 🔍 ⚙️ Key Features
 
 ✔ Service Discovery using Eureka
+
 ✔ Centralized API Gateway Routing
+
 ✔ Inter-service Communication (User ↔ Department)
+
 ✔ Load Balancing using Eureka
+
 ✔ Independent Deployment of Services
+
 ✔ Scalable Architecture
 
 ---
@@ -88,8 +93,8 @@ Run in order:
 
 | Service            | Endpoint                            |
 | ------------------ | ----------------------------------- |
-| User Service       | http://localhost:9191/user/**       |
-| Department Service | http://localhost:9191/department/** |
+| User Service       | http://localhost:8081/user/**       |
+| Department Service | http://localhost:8082/department/** |
 
 ---
 
