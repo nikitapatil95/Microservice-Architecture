@@ -43,6 +43,8 @@ microservices-project/
 ├── api-gateway/             (Gateway)
 ├── user-service/            (User Microservice)
 ├── department-service/      (Department Microservice)
+│
+├── docker-compose.yml       (optional - for Docker)
 ├── README.md                (project explanation)
 
 ************************************************************************************************************
