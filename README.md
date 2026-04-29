@@ -6,5 +6,11 @@ This project demonstrates a Microservices Architecture using Spring Boot, where 
 # Project Architecture
 
 1) User Service
-•  Manages user - related data
-•  Handles CRUD operations (Create, Read, Update, Delete)
+
+-  Manages user - related data
+-  Handles CRUD operations (Create, Read, Update, Delete)
+
+2) Department Service
+
+-  Manages department information
+-  Provides department details when requested
